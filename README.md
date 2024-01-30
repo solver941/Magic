@@ -1,93 +1,59 @@
-# magic
+__init__(self, ...): Konstruktor, volá se při vytváření nové instance třídy.
 
+__del__(self): Destruktor, volá se při odstranění instance z paměti. Není vždy spolehlivě volán, není doporučováno spoléhat se na něj pro správu zdrojů.
 
+__str__(self): Definuje textovou reprezentaci objektu pro funkce str() a print().
 
-## Getting started
+__repr__(self): Definuje reprezentaci objektu, která měla být nezávislá na lidské interpretaci a používá se v kombinaci s funkcí repr().
 
-To make it easy for you to get started with GitLab, here's a list of recommended next steps.
+__len__(self): Definuje délku objektu pro funkci len().
 
-Already a pro? Just edit this README.md and make it your own. Want to make it easy? [Use the template at the bottom](#editing-this-readme)!
+__getitem__(self, key): Definuje chování pro indexování objektu, tedy umožňuje použití hranatých závorek pro získání hodnoty (obj[key]).
 
-## Add your files
+__setitem__(self, key, value): Definuje chování pro nastavení hodnoty pomocí indexu (obj[key] = value).
 
-- [ ] [Create](https://docs.gitlab.com/ee/user/project/repository/web_editor.html#create-a-file) or [upload](https://docs.gitlab.com/ee/user/project/repository/web_editor.html#upload-a-file) files
-- [ ] [Add files using the command line](https://docs.gitlab.com/ee/gitlab-basics/add-file.html#add-a-file-using-the-command-line) or push an existing Git repository with the following command:
+__delitem__(self, key): Definuje chování pro odstranění hodnoty pomocí indexu (del obj[key]).
 
-```
-cd existing_repo
-git remote add origin https://gitlab.com/spseol/prg-no/3L-2023/magic.git
-git branch -M main
-git push -uf origin main
-```
+__iter__(self): Definuje iterátor pro objekt, umožňuje použití objektu v for smyčce.
 
-## Integrate with your tools
+__next__(self): Definuje chování pro získání další hodnoty v iterátoru.
 
-- [ ] [Set up project integrations](https://gitlab.com/spseol/prg-no/3L-2023/magic/-/settings/integrations)
+__contains__(self, item): Definuje chování pro operátor in, umožňuje zjistit, zda objekt obsahuje danou hodnotu.
 
-## Collaborate with your team
+__call__(self, ...): Umožňuje volání instance třídy jako funkce.
 
-- [ ] [Invite team members and collaborators](https://docs.gitlab.com/ee/user/project/members/)
-- [ ] [Create a new merge request](https://docs.gitlab.com/ee/user/project/merge_requests/creating_merge_requests.html)
-- [ ] [Automatically close issues from merge requests](https://docs.gitlab.com/ee/user/project/issues/managing_issues.html#closing-issues-automatically)
-- [ ] [Enable merge request approvals](https://docs.gitlab.com/ee/user/project/merge_requests/approvals/)
-- [ ] [Set auto-merge](https://docs.gitlab.com/ee/user/project/merge_requests/merge_when_pipeline_succeeds.html)
+__eq__(self, other): Definuje chování pro porovnání rovnosti pomocí operátoru ==.
 
-## Test and Deploy
+__ne__(self, other): Definuje chování pro porovnání nerovnosti pomocí operátoru !=.
 
-Use the built-in continuous integration in GitLab.
+__lt__(self, other), __le__(self, other), __gt__(self, other), __ge__(self, other): Definují chování pro porovnání (např. <, <=, >, >=).
 
-- [ ] [Get started with GitLab CI/CD](https://docs.gitlab.com/ee/ci/quick_start/index.html)
-- [ ] [Analyze your code for known vulnerabilities with Static Application Security Testing (SAST)](https://docs.gitlab.com/ee/user/application_security/sast/)
-- [ ] [Deploy to Kubernetes, Amazon EC2, or Amazon ECS using Auto Deploy](https://docs.gitlab.com/ee/topics/autodevops/requirements.html)
-- [ ] [Use pull-based deployments for improved Kubernetes management](https://docs.gitlab.com/ee/user/clusters/agent/)
-- [ ] [Set up protected environments](https://docs.gitlab.com/ee/ci/environments/protected_environments.html)
+__add__(self, other), __sub__(self, other), __mul__(self, other), __truediv__(self, other): Definují chování pro aritmetické operátory (např. +, -, *, /).
 
-***
+__hash__(self): Definuje chování pro výpočet hashe objektu. Je používáno například při použití objektu jako klíče v slovnících.
 
-# Editing this README
+__bool__(self): Definuje chování pro zjištění, zda je objekt považován za pravdivý nebo ne, když je používán v kontextu podmíněného výrazu (if obj:).
 
-When you're ready to make this README your own, just edit this file and use the handy template below (or feel free to structure it however you want - this is just a starting point!). Thanks to [makeareadme.com](https://www.makeareadme.com/) for this template.
+__enter__(self), __exit__(self, exc_type, exc_value, traceback): Tyto metody se používají v kontextových managerech. __enter__ se volá při vstupu do bloku with, a __exit__ se volá při opuštění bloku with. Například pro správu zdrojů nebo manipulaci s kontextem.
 
-## Suggestions for a good README
+__copy__(self): Definuje chování pro kopírování objektu pomocí funkce copy.copy().
 
-Every project is different, so consider which of these sections apply to yours. The sections used in the template are suggestions for most open source projects. Also keep in mind that while a README can be too long and detailed, too long is better than too short. If you think your README is too long, consider utilizing another form of documentation rather than cutting out information.
+__deepcopy__(self, memo): Definuje chování pro hluboké kopírování objektu pomocí funkce copy.deepcopy().
 
-## Name
-Choose a self-explaining name for your project.
+__instancecheck__(self, instance): Definuje chování pro kontrolu, zda je objekt instancí dané třídy (isinstance(obj, cls)).
 
-## Description
-Let people know what your project can do specifically. Provide context and add a link to any reference visitors might be unfamiliar with. A list of Features or a Background subsection can also be added here. If there are alternatives to your project, this is a good place to list differentiating factors.
+__subclasscheck__(self, subclass): Definuje chování pro kontrolu, zda je třída podtřídou dané třídy (issubclass(subclass, cls)).
 
-## Badges
-On some READMEs, you may see small images that convey metadata, such as whether or not all the tests are passing for the project. You can use Shields to add some to your README. Many services also have instructions for adding a badge.
+__dir__(self): Definuje chování pro získání seznamu atributů objektu, který se používá při volání funkce dir().
 
-## Visuals
-Depending on what you are making, it can be a good idea to include screenshots or even a video (you'll frequently see GIFs rather than actual videos). Tools like ttygif can help, but check out Asciinema for a more sophisticated method.
+__setattr__(self, name, value): Definuje chování pro nastavení hodnoty atributu (obj.name = value).
 
-## Installation
-Within a particular ecosystem, there may be a common way of installing things, such as using Yarn, NuGet, or Homebrew. However, consider the possibility that whoever is reading your README is a novice and would like more guidance. Listing specific steps helps remove ambiguity and gets people to using your project as quickly as possible. If it only runs in a specific context like a particular programming language version or operating system or has dependencies that have to be installed manually, also add a Requirements subsection.
+__getattr__(self, name): Definuje chování pro čtení hodnoty neexistujícího atributu (obj.name), pokud atribut není nalezen.
 
-## Usage
-Use examples liberally, and show the expected output if you can. It's helpful to have inline the smallest example of usage that you can demonstrate, while providing links to more sophisticated examples if they are too long to reasonably include in the README.
+__delattr__(self, name): Definuje chování pro odstranění atributu (del obj.name).
 
-## Support
-Tell people where they can go to for help. It can be any combination of an issue tracker, a chat room, an email address, etc.
+__format__(self, format_spec): Definuje chování pro formátování řetězce pomocí metody format().
 
-## Roadmap
-If you have ideas for releases in the future, it is a good idea to list them in the README.
+__call__(self, *args, **kwargs): Definuje chování pro volání instance třídy jako funkce (obj()).
 
-## Contributing
-State if you are open to contributions and what your requirements are for accepting them.
-
-For people who want to make changes to your project, it's helpful to have some documentation on how to get started. Perhaps there is a script that they should run or some environment variables that they need to set. Make these steps explicit. These instructions could also be useful to your future self.
-
-You can also document commands to lint the code or run tests. These steps help to ensure high code quality and reduce the likelihood that the changes inadvertently break something. Having instructions for running tests is especially helpful if it requires external setup, such as starting a Selenium server for testing in a browser.
-
-## Authors and acknowledgment
-Show your appreciation to those who have contributed to the project.
-
-## License
-For open source projects, say how it is licensed.
-
-## Project status
-If you have run out of energy or time for your project, put a note at the top of the README saying that development has slowed down or stopped completely. Someone may choose to fork your project or volunteer to step in as a maintainer or owner, allowing your project to keep going. You can also make an explicit request for maintainers.
+__sizeof__(self): Definuje chování pro získání velikosti objektu v bajtech pomocí funkce sys.getsizeof().
