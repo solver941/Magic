@@ -1,6 +1,6 @@
 import pytest
 
-from task1.vector import Vector
+from vector import Vector
 
 
 @pytest.fixture
