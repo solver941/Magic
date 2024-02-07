@@ -13,7 +13,7 @@ class PriorityQueue:
 
     def push(self, item, importance):
         self.elements.append(item)
-        self.elements_with_importance.append((item, importance))
+        self.elements_with_importance[item] = importance
         self.elements.sort()
 
     def pop(self):
