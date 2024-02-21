@@ -1,45 +1,29 @@
 class PriorityQueue:
     def __init__(self):
-        self.elements = []
-        self.elements_with_importance = {}
-        self.importances = []
+        self.queue = []
 
     def __len__(self):
-        return len(self.elements)    
-    
-    def __list__(self):
-        self.elements.sort(key=lambda x: x[1])
-        print(self.elements)
+        return len(self.queue)
 
-    def push(self, item, importance):
-        self.elements.append(item)
-        self.elements_with_importance[item] = importance
-        self.elements.sort()
+    def __iter__(self):
+        return iter([task[0] for task in self.queue])
+
+    def push(self, task_name, priority):
+        for i in range(len(self.queue)):
+            if self.queue[i][1] < priority:
+                self.queue.insert(i, (task_name, priority))
+                return
+        self.queue.append((task_name, priority))
 
     def pop(self):
-        if not self.elements:
-            raise IndexError("Trying to pop from an empty priority queue")
-        for i in self.elements_with_importance:
-            self.importances.append(i[1])
-        sort = (sorted(self.importances))
-        highest = sort[0]
-        index = 0
-        for i in self.elements_with_importance:
-            if i[1] ==  highest:
-                print(self.elements[index])
-                del self.elements_with_importance[index]
-                del self.elements[index]   
-            index += 1        
+        if len(self.queue) == 0:
+            raise IndexError
 
-    def __empty_pop__(self):
-        pass
-
-    def __interation__(self):
-        pass
+        return self.queue.pop(0)[0]
 
 
 
-"""
+""""
 priority_queue = PriorityQueue()
 priority_queue.push("Task 1", 3)
 priority_queue.push("Task 2", 1)
@@ -56,5 +40,5 @@ while len(priority_queue) > 0:
     task = priority_queue.pop()
     print("Processing:", task)
 
-"""
 
+"""

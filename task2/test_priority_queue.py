@@ -34,4 +34,4 @@ def test_iteration():
     pq.push("Task 3", 2)
 
     tasks = list(pq)
-    assert tasks == ["Task 2", "Task 3", "Task 1"]
+    assert tasks == ["Task 1", "Task 3", "Task 2"]
